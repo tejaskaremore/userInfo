@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import { useState } from "react";
 const UserInfo = (props) => {
   const { currentTab } = props;
-  console.log("currentTab", currentTab);
+  console.log("currentTab 2", currentTab);
   const [userData, setUserData] = useState([]);
 
   let currentPage = <div> Select current Page </div>;
