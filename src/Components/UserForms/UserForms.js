@@ -16,7 +16,8 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import { useState } from "react";
 import moment from "moment";
 const UserForms = (props) => {
-  const{userData , setUserData }= props;
+  const {userData, setUserData} = props;
+  
   const [name, SetUserName] = useState("name1");
   const [dob, SetDob] = useState(moment());
   const [age, SetAge] = useState("");
@@ -24,14 +25,14 @@ const UserForms = (props) => {
   const [college, SetCollege] = useState("");
 
 
-  const submitUserForms = () => {
+  const submitUserForm = () => {
     // console.log('user name',name);
     // console.log('dob', dob.format('DD/MM/YYYY'));
     // console.log('age', age);
     // console.log('gender', gender);
     // console.log('college', college);
     const newDob = dob.format('DD/MM/YYYY');
-    const newUserObj = { code :userData.length ,name, dob:newDob, age, gender, college}
+    const newUserObj = {code: `u${userData.length}`, name, dob:newDob, age, gender, college}
     // console.log('newUserObj',newUserObj)
     // console.log('userData',userData)
     const newUserData = [
@@ -99,7 +100,7 @@ const UserForms = (props) => {
           value={college}
           onChange={(event) => SetCollege(event.target.value)}
         />
-        <Button variant="contained" color="success" onClick={submitUserForms}>
+        <Button variant="contained" color="success" onClick={submitUserForm}>
           Submit
         </Button>
       </Stack>

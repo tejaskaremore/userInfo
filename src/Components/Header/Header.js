@@ -14,8 +14,8 @@ import Person4Icon from "@mui/icons-material/Person4";
 const pages = ["UserEnter", "UserTable", "UserCards"];
 
 const Header = (props) => {
-
-  const { currentTab, setCurrenTab } = props;
+  
+  const { currentTab , setCurrenTab} = props;
   // console.log('currentTab',currentTab);
   // console.log('setCurrenTab',setCurrenTab)
   const [isLogin, setIsLogin] = React.useState(true);
@@ -27,13 +27,11 @@ const Header = (props) => {
 
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
-    // console.log(' click on header tabs',page)
     setCurrenTab(page.target.textContent)
   };
 
   const changeUserStatus = () => {
-    console.log('isLogin', isLogin)
-    setIsLogin(!isLogin)
+      setIsLogin(!isLogin)
   }
 
   const loginLogoutButton = !isLogin ? (
@@ -99,17 +97,17 @@ const Header = (props) => {
               }}
             >
               {pages.map((page) => {
-
-                if (isLogin) {
-                  if (page === 'UserTable' || page === 'UserCards') {
-                    return (<MenuItem key={page} onClick={() => { handleCloseNavMenu(page) }}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>)
-
-                  }
+                if(isLogin) {
+                
+                    if(page ==='UserTable' || page === 'UserCards') {
+                      return (
+                        <MenuItem key={page} onClick={() => {handleCloseNavMenu(page)}}>
+                          <Typography textAlign="center">{page}</Typography>
+                        </MenuItem>
+                      )
+                    }
                 }
-
-
+               
               })}
             </Menu>
           </Box>
@@ -133,33 +131,35 @@ const Header = (props) => {
             User Info 2
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => {
-
-              if (isLogin) {
-                if (page === 'UserTable' || page === 'UserCards') {
-                  return (<MenuItem key={page} onClick={() => { handleCloseNavMenu(page) }}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>)
-
+          {pages.map((page) => {
+                if(isLogin) {
+                
+                    if(page ==='UserTable' || page === 'UserCards') {
+                      return (
+                        <Button
+                        key={page}
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        {page}
+                      </Button>
+                      )
+                    }
+                }else {
+                  if(page ==='UserEnter'){
+                    return (
+                      <Button
+                      key={page}
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      {page}
+                    </Button>
+                    )
+                  }
                 }
-              }else{
-
-                if(page === 'UserEnter'){
-                  return (<MenuItem key={page} onClick={() => { handleCloseNavMenu(page) }}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>)
-                }
-
-
-
-
-              }
-
-
-            })}
-
-
-
+              })
+            }
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
